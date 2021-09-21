@@ -1,0 +1,41 @@
+     h
+     FWEBPF1    IF A E           K DISK
+     d MSG             S             50A   VARYING
+     d HEAD            S             50A   VARYING
+     D URL             S             50A   VARYING
+     D Head1           S           1000A   VARYING
+     D Body            S             50A   VARYING
+       /free
+          exec sql
+            set option commit = *none;
+
+          URL = 'http://129.40.98.241:12345/ws/GETPGM1/101';
+
+          exec sql
+            select coalesce(varChar(responseMsg,20000),' '),
+            varChar(responseHttpHeader,10000) INTO
+            :S1,:HEAD
+            from Table(Systools.HttpGetClobVerbose(
+            Trim(:URL),
+            Trim('<httpheader></httpheader>')));
+          WRITE SREC;
+
+          URL = 'http://129.40.98.241:12345/ws/POSTPGM2';
+          Head1 ='<httpHeader><header name="Content-Type" value="text/plain">'+
+                   '</header></httpHeader>';
+          EXEC SQL
+            select coalesce(varChar(responseMsg,20000),' '),
+            varChar(responseHttpHeader,10000) INTO :MSG,:HEAD
+            from Table(Systools.HttpPostClobVerbose(
+            Trim(:URL),
+          //Trim('<httpHeader><header name="Content-Type" value="text/plain">+
+          //      </header></httpHeader>'),
+            Trim(:Head1),
+            Trim('188,ankit,33,12345')));
+
+          DSPLY SQLCODE;
+          DSPLY MSG;
+          DSPLY HEAD;
+
+         *INLR = *ON;
+       /end-free
