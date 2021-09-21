@@ -9,6 +9,8 @@
        /free
           exec sql
             set option commit = *none;
+            
+            Exec sql CALL QSYS2.QCMDEXC('CHGJOB CCSID(37)');
 
           URL = 'https://gorest.co.in/public/v1/users';
           AUTH = 'f392ec33532dd36c769a3455be52151d8dcbebc'+
