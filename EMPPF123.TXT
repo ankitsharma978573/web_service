@@ -1,0 +1,6 @@
+     A          R EREC
+     A            EID            4S 0
+     A            ENAM          20A
+     A            EAGE           3S 0
+     A            ESALARY       10S 0
+     A          K EID
