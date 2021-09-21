@@ -8,6 +8,8 @@
        /free
           exec sql
             set option commit = *none;
+            
+            Exec sql CALL QSYS2.QCMDEXC('CHGJOB CCSID(37)');
 
           URL = 'http://129.40.98.241:12345/ws/GETPGM1/101';
 
