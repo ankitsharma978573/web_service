@@ -41,4 +41,7 @@
   -	WEBPGM3: A basic program to display the data into the browser.
   -	WEBPGM4: Consuming Get and Post to Personal web-server.
   
+**PUT:**
+  - PUTPGM1: Consuming PUT to update name/gender/status information as per ID from : https://gorest.co.in/public/v1/comments/
+  
 
