@@ -43,5 +43,8 @@
   
 **PUT:**
   - PUTPGM1: Consuming PUT to update name/gender/status information as per ID from : https://gorest.co.in/public/v1/comments/
+ 
+**DELETE**
+  - DLTPGM1: Consuming DELETE to delete information for per ID from : https://gorest.co.in/public/v1/todos
   
 
